@@ -10,7 +10,7 @@ local function CreateTripletNet(EmbeddingNet, inputs, distMetric, postProcess)
   local num = #inputs
   for i=1,num do
       if i < num then
-          nets[i+1] = nets[1]:clone('weight','bias','gradWeight','gradBias','running_mean','running_std')
+          nets[i+1] = nets[1]:clone('weight','bias','gradWeight','gradBias','running_mean','running_std', 'running_var')
       end
       embeddings[i] = nets[i](inputs[i])
   end
